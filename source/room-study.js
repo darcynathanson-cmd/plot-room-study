@@ -1264,7 +1264,7 @@ return exports;})();
       animate();
     });
     canvas.addEventListener('pointerdown',e=>{
-      if(e.button!==0||overview||exportJob||graphicsFailed)return;
+      if(e.button!==0||e.isPrimary===false||drag||overview||exportJob||graphicsFailed)return;
       stop();
       canvas.setPointerCapture(e.pointerId);
       drag={
@@ -1282,12 +1282,13 @@ return exports;})();
       drag.lastY=e.clientY;
       drag.t=now;
       targetYaw=resist(drag.yaw+(e.clientX-drag.x)*.13,-30,30);
-      targetPitch=resist(drag.pitch+(e.clientY-drag.y)*.08,-10,10);
+      targetPitch=e.pointerType==='touch'?drag.pitch:resist(drag.pitch+(e.clientY-drag.y)*.08,-10,10);
       animate();
     });
     function endDrag(e){
       if(!drag||e.pointerId!==drag.id)return;
-      const recent=performance.now()-drag.t<80;
+      const recent=e.type==='pointerup'&&performance.now()-drag.t<80;
+      if(e.type==='pointercancel'&&e.pointerType==='touch'){targetYaw=drag.yaw;targetPitch=drag.pitch;}
       targetYaw=clamp(targetYaw+(recent?drag.vx*7:0),-30,30);
       targetPitch=clamp(targetPitch+(recent?drag.vy*4:0),-10,10);
       drag=null;
