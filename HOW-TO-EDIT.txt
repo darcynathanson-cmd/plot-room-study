@@ -1,0 +1,41 @@
+A SMALL EDIT: POINT SIZE
+
+1. Unzip room-study.zip. Keep the files together.
+2. Duplicate index.html and name the copy my-plot.html.
+3. Open my-plot.html in a plain-text code editor.
+4. Find this line near the start of the JavaScript:
+
+   const POINT_SIZE = 1.35;
+
+5. Change 1.35 to 2.4. Save the file.
+6. Open my-plot.html in a browser with WebGL, or reload it if already open.
+7. Choose "original points". Compare it with the original index.html.
+
+The points should be larger. The "white reveal" and "depth slice" points also
+use this setting. "Sparse glow" has its own radius control.
+Blocks and lines use different geometry.
+
+To undo the edit, change 2.4 back to 1.35 and reload. The reset view button
+resets the controls, not changes to the source code.
+
+WHERE THE CODE LIVES
+
+index.html is the working tool. Its photo, depth samples, font and JavaScript
+are embedded, so it can run as one file without a build step or installation.
+source/room-study.js is a readable copy of the exact embedded JavaScript for this
+version. Editing that separate file alone will not change index.html.
+
+Start with configs (the six effects), sample (depth-to-position), render
+(drawing), and the event listeners (controls). vert and frag are the WebGL
+shaders. The point-data script holds saved depth and luminance, not JavaScript.
+
+SOURCE AND SHARING
+
+This package lets you inspect and edit the experiment. It does not grant a new
+license to the source photograph. Keep the photo, model and reference credits
+when making a copy. The embedded font has its own OFL 1.1 license.
+
+CHECK LIMITS
+
+Automated checks cover script logic using a simulated DOM/WebGL environment.
+Real browser rendering and an actual saved PNG have not been verified here.
