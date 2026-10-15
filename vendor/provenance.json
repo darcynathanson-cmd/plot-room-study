@@ -1,0 +1,8 @@
+{
+  "name": "gifenc",
+  "version": "1.0.3",
+  "url": "https://unpkg.com/gifenc@1.0.3/dist/gifenc.js",
+  "license": "MIT",
+  "sha256": "ab1ff6a05a05ddb85f642ae4c3f96d9e69e56fcfc472982172b088344e0fdb59",
+  "modifications": "CommonJS wrapper embedded locally; sourcemap URL removed. Source binary retained."
+}
